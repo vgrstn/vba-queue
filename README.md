@@ -62,11 +62,11 @@ Timings (ms) for one `Enqueue` + one `Dequeue`, measured on Windows x64:
 
 | # | Count  | vba-queue | System.Collections.Queue |
 |---|--------|-----------|--------------------------|
-| 1 | 10     | 0.00046   | 0.00518                  |
-| 2 | 100    | 0.00046   | 0.00516                  |
-| 3 | 1,000  | 0.00046   | 0.00523                  |
-| 4 | 10,000 | 0.00046   | 0.00340                  |
-| 5 | 100,000| 0.00046   | 0.00338                  |
+| 1 | 10     | 0.00050   | 0.00326                 |
+| 2 | 100    | 0.00049   | 0.00325                  |
+| 3 | 1,000  | 0.00049   | 0.00375                  |
+| 4 | 10,000 | 0.00049   | 0.00392                  |
+| 5 | 100,000| 0.00049   | 0.00409                  |
 
 Performance is consistent regardless of queue size. `System.Collections.Queue` uses late binding, which explains its relatively poor performance.
 
