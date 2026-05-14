@@ -4,7 +4,7 @@
 ![Architecture](https://img.shields.io/badge/Architecture-x86%20%7C%20x64-lightgrey)
 ![Rubberduck](https://img.shields.io/badge/Rubberduck-Ready-orange)
 
-Generic VBA Class based on an encapsulated VB Collection
+VBA Class for generic Queue based on an encapsulated VB Collection
 
 A lightweight, **Collection-backed FIFO queue** for VBA with:
 - O(1) enqueue at the **rear** and dequeue from the **front** (position `1`)
