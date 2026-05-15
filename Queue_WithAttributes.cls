@@ -8,9 +8,6 @@ Attribute VB_Creatable = False
 Attribute VB_PredeclaredId = False
 Attribute VB_Exposed = False
 Attribute VB_Description = "Generic Queue Class."
-'@IgnoreModule UseMeaningfulName, ProcedureNotUsed
-'@Folder("Class")
-'@ModuleDescription("Generic Queue Class.")
 
 '------------------------------------------------------------------------------
 ' MIT License
@@ -46,7 +43,6 @@ Option Explicit
 ' E-mail: vincent@vangeerestein.com
 ' Description: Generic Queue Class
 ' Enumeration: For Each item in object
-' Add-in: RubberDuck (https://rubberduckvba.com/)
 ' Version: 2025.09.09
 '
 ' Methods
@@ -108,10 +104,10 @@ End Sub
 ' Public methods
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-'@Enumerator
-'@Description "Enumerates queue from front to rear."
 Public Property Get Enumerate() As IEnumVARIANT
-' Called by For Each by setting Attribute Enumerate.VB_UserMemId = -4.
+Attribute Enumerate.VB_UserMemId = -4
+Attribute Enumerate.VB_Description = "Enumerates queue from front to rear."
+' Called by For Each via Attribute Enumerate.VB_UserMemId = -4.
 ' [_NewEnum] is the name of the hidden method to enumerate a VB Collection.
 '
 ' Don't mutate the Queue object during the For Each loop. This will result in
@@ -122,33 +118,33 @@ Public Property Get Enumerate() As IEnumVARIANT
 End Property
 
 
-'@Description "Removes all items from the Queue."
 Public Sub Clear()
+Attribute Clear.VB_Description = "Removes all items from the Queue."
 
     Set this.Queue = New Collection
 
 End Sub
 
 
-'@Description "Returns the number of items contained in the Queue."
 Public Property Get Count() As Long
+Attribute Count.VB_Description = "Returns the number of items contained in the Queue."
 
     Count = this.Queue.Count
 
 End Property
 
 
-'@Description "Returns True if the queue is empty or False if not."
 Public Property Get IsEmpty() As Boolean
+Attribute IsEmpty.VB_Description = "Returns True if the queue is empty or False if not."
 
     IsEmpty = (this.Queue.Count = 0)
 
 End Property
 
 
-'@DefaultMember
-'@Description "Returns the item at the front of the Queue."
 Public Property Get Peek() As Variant
+Attribute Peek.VB_UserMemId = 0
+Attribute Peek.VB_Description = "Returns the item at the front of the Queue."
 
     If this.Queue.Count = 0 Then Err.Raise vbErrorInvalidProcedureCall, VBA.TypeName(Me) & ".Peek", "Queue is empty"
     AssignVariant Peek, this.Queue.Item(Front)
@@ -156,8 +152,8 @@ Public Property Get Peek() As Variant
 End Property
 
 
-'@Description "Removes and returns the item at the front of the Queue."
 Public Function Dequeue() As Variant
+Attribute Dequeue.VB_Description = "Removes and returns the item at the front of the Queue."
 
     If this.Queue.Count = 0 Then Err.Raise vbErrorInvalidProcedureCall, VBA.TypeName(Me) & ".Dequeue", "Queue is empty"
     AssignVariant Dequeue, this.Queue.Item(Front)
@@ -166,16 +162,16 @@ Public Function Dequeue() As Variant
 End Function
 
 
-'@Description "Adds an item to the rear of the Queue."
 Public Sub Enqueue(ByVal Item As Variant)
+Attribute Enqueue.VB_Description = "Adds an item to the rear of the Queue."
 
     this.Queue.Add Item
 
 End Sub
 
 
-'@Description "Exports all queue items to an array."
 Public Function Items(Optional ByVal base As Long) As Variant()
+Attribute Items.VB_Description = "Exports all queue items to an array."
 
     Dim arr() As Variant: ReDim arr(base To base + this.Queue.Count - 1)
     Dim i As Long: i = base
@@ -197,9 +193,8 @@ End Function
 ' Private methods
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 
-'@Description "Assigns a value or an object reference to a variable."
-'@Ignore ProcedureCanBeWrittenAsFunction
 Private Sub AssignVariant(ByRef var As Variant, ByVal value As Variant)
+Attribute AssignVariant.VB_Description = "Assigns a value or an object reference to a variable."
 ' Prevents getting a Collection item twice at the expense of a stack frame.
 
     If VBA.IsObject(value) Then

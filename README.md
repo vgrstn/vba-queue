@@ -14,6 +14,17 @@ A lightweight, **Collection-backed FIFO queue** for VBA with:
 
 ---
 
+## 📁 Files
+
+| File | Description |
+|---|---|
+| `Queue.cls` | Source file with [Rubberduck](https://rubberduckvba.com/) annotations (`'@Description`, `'@DefaultMember`, `'@Enumerator`) |
+| `Queue_WithAttributes.cls` | Ready-to-import version with VB attributes baked in — no Rubberduck required |
+
+Both files are identical in behaviour. Import `Queue_WithAttributes.cls` if you are not using Rubberduck.
+
+---
+
 ## 📦 Features
 
 - **Fast enqueue/dequeue** (front is position `1`)
@@ -62,11 +73,11 @@ Timings (ms) for one `Enqueue` + one `Dequeue`, measured on Windows x64:
 
 | # | Count  | vba-queue | System.Collections.Queue |
 |---|--------|-----------|--------------------------|
-| 1 | 10     | 0.00050   | 0.00326                 |
-| 2 | 100    | 0.00049   | 0.00325                  |
-| 3 | 1,000  | 0.00049   | 0.00375                  |
-| 4 | 10,000 | 0.00049   | 0.00392                  |
-| 5 | 100,000| 0.00049   | 0.00409                  |
+| 1 | 10      | 0.00045   | 0.00518                  |
+| 2 | 100     | 0.00045   | 0.00516                  |
+| 3 | 1,000   | 0.00045   | 0.00523                  |
+| 4 | 10,000  | 0.00045   | 0.00340                  |
+| 5 | 100,000 | 0.00045   | 0.00338                  |
 
 Performance is consistent regardless of queue size. `System.Collections.Queue` uses late binding, which explains its relatively poor performance.
 
